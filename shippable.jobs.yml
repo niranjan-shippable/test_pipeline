@@ -1,0 +1,26 @@
+jobs:      
+  - name: dv-run-sh
+    type: runSh
+    steps:
+      - IN: dv-params-1
+      - TASK:
+        - script: echo "********* terraform version ********"
+        - script: terraform --version
+        - script: echo "********* kubectl version ********"
+        - script: kubectl version || true
+        - script: echo "********* jfrog version ********"
+        - script: jfrog --version
+        - script: echo "********* gcloud version ********"
+        - script: gcloud --version
+        - script: echo "*********  eb version ********"
+        - script: eb --version
+        - script: echo "********* packer version ********"
+        - script: packer --version || true
+        - script: echo "********* azure version ********"
+        - script: apt search azure-cli
+        - script: echo "********* az version ********"
+        - script: az --version
+        - script: echo "********* yarn version ********"
+        - script: yarn --version
+        - script: mkdir test_yarn && cd test_yarn
+        - script: yarn && yarn add loadash && yarn install
