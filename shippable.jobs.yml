@@ -3,7 +3,6 @@ jobs:
     type: runSh
     steps:
       - TASK:
-        - script: exit 1
         - script: uname -a
         - script: terraform --version || true
         - script: node -v
