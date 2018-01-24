@@ -2,7 +2,6 @@ jobs:
   - name: test-run-sh
     type: runSh
     steps:
-      - IN: dv-params-1
       - TASK:
         - script: echo "********* terraform version ********"
         - script: terraform --version
