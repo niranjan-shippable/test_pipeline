@@ -1,5 +1,5 @@
 jobs:      
-  - name: dv-run-sh
+  - name: test-run-sh
     type: runSh
     steps:
       - IN: dv-params-1
@@ -23,4 +23,4 @@ jobs:
         - script: echo "********* yarn version ********"
         - script: yarn --version
         - script: mkdir test_yarn && cd test_yarn
-        - script: yarn && yarn add loadash && yarn install
+        - script: node -v
