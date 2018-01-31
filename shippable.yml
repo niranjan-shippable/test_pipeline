@@ -13,4 +13,3 @@ jobs:
         - script: uname -a
         - script: az --version
         - script: az account list
-        - script: az aks get-credentials
