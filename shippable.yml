@@ -1,0 +1,15 @@
+resources:
+  - name: test-azure-cli
+    type: cliConfig
+    integration: test-azure
+
+
+jobs:      
+  - name: test-azure-pipeline
+    type: runSh
+    steps:
+      - TASK:
+        - script: uname -a
+        - script: az --version
+        - script: az account list
+        - script: az aks get-credentials

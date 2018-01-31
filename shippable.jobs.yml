@@ -1,8 +1,0 @@
-jobs:      
-  - name: test-run-sh
-    type: runSh
-    steps:
-      - TASK:
-        - script: uname -a
-        - script: terraform --version || true
-        - script: node -v
