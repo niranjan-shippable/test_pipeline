@@ -8,6 +8,7 @@ jobs:
   - name: test-azure-pipeline
     type: runSh
     steps:
+      - IN: test-azure-cli
       - TASK:
         - script: uname -a
         - script: az --version
