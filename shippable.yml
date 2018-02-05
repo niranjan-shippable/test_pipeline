@@ -21,6 +21,8 @@ jobs:
   ## Job description:
   - name: test-image-tagging
     type: runSh
+    runtime:
+      nodePool: custom__x86_64__WindowsServer_2016
     steps:
       - IN: myGitRepo
       - TASK:
