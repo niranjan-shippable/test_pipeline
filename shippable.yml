@@ -23,6 +23,7 @@ jobs:
     type: runSh
     runtime:
       nodePool: custom__x86_64__WindowsServer_2016
+      container: false # run on host by default
     steps:
       - IN: myGitRepo
       - TASK:
