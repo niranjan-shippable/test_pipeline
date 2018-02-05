@@ -1,15 +1,40 @@
 resources:
-  - name: test-azure-cli
-    type: cliConfig
-    integration: test-azure
+
+  - name: myGitRepo
+    type: gitRepo
+    # replace github with your SCM integration name
+    integration: github
+    pointer:
+      # replace devops-recipes/myapp with your source code organization and repository name.
+      sourceName: niranjan-shippable/test_pipeline
+      # configure branch
+      branch: master
+      # configure webhooks
+      buildOnCommit:            true
+      buildOnPullRequest:       true
+      buildOnPullRequestClose:  false
+      buildOnRelease:           false
+      buildOnTagPush:           false
 
 
 jobs:      
-  - name: test-azure-pipeline
+  ## Job description:
+  - name: test-image-tagging
     type: runSh
     steps:
-      - IN: test-azure-cli
+      - IN: myGitRepo
       - TASK:
-        - script: uname -a
-        - script: az --version
-        - script: az account list
+          name: buildApp
+          script:
+            - cd $(shipctl get_resource_state "myGitRepo")
+            # run the build script
+            - ./tagAndPushImage.ps1 w16reqproc nirnajanhub prod_release
+    on_success:
+      script:
+        - echo "Task successfully completed"
+    on_failure:
+      script:
+        - echo "This should be executed if any step in TASK fails"
+    always:
+      script:
+        - echo "This should always be executed, regardless of job status"
