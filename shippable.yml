@@ -28,7 +28,7 @@ jobs:
           script:
             - cd $(shipctl get_resource_state "myGitRepo")
             # run the build script
-            - ./tagAndPushImage.ps1 w16reqproc nirnajanhub prod_release
+            - echo "hello"
     on_success:
       script:
         - echo "Task successfully completed"
