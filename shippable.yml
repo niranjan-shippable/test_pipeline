@@ -40,6 +40,7 @@ jobs:
             #- docker build -t=niranjanhub/u14phpall .
             #- echo "ended docker build"
             - echo "consume memory"
+            - apt-get install pv
             - yes | tr \\n x | head -c $((10*1024*1024*1024)) | pv -L $((1024*1024)) | grep n
             - echo "done consuming memory"
 
