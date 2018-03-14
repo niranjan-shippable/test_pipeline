@@ -21,23 +21,18 @@ jobs:
   ## Job description:
   - name: test-image-tagging
     type: runSh
-    runtime:
-      nodePool: custom__x86_64__WindowsServer_2016
-      container: false # run on host by default
+    #runtime:
+      #nodePool: custom__x86_64__WindowsServer_2016
+      #container: false # run on host by default
     steps:
       - IN: myGitRepo
       - TASK:
-          name: buildApp
+          name: checkRunShJob
           script:
             - cd $(shipctl get_resource_state "myGitRepo")
             # run the build script
+            - docker images
             - echo "hello"
     on_success:
       script:
         - echo "Task successfully completed"
-    on_failure:
-      script:
-        - echo "This should be executed if any step in TASK fails"
-    always:
-      script:
-        - echo "This should always be executed, regardless of job status"
