@@ -34,11 +34,15 @@ jobs:
             - docker images
             - echo "sleeping 10 seconds"
             - sleep 10 
-            - git clone https://github.com/niranjan92/u14phpall
-            - cd u14phpall 
-            - echo "starting docker build"
-            - docker build -t=niranjanhub/u14phpall .
-            - echo "ended docker build"
+            #- git clone https://github.com/niranjan92/u14phpall
+            #- cd u14phpall 
+            #- echo "starting docker build"
+            #- docker build -t=niranjanhub/u14phpall .
+            #- echo "ended docker build"
+            - echo "consume memory"
+            - yes | tr \\n x | head -c $((10*1024*1024*1024)) | pv -L $((1024*1024)) | grep n
+            - echo "done consuming memory"
+
     on_success:
       script:
         - echo "Task successfully completed"
