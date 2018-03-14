@@ -31,9 +31,9 @@ jobs:
           script:
             - cd $(shipctl get_resource_state "myGitRepo")
             # run the build script
-            - docker images
-            - echo "sleeping 10 seconds"
-            - sleep 10 
+            #- docker images
+            #- echo "sleeping 10 seconds"
+            #- sleep 10 
             #- git clone https://github.com/niranjan92/u14phpall
             #- cd u14phpall 
             #- echo "starting docker build"
