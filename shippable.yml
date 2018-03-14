@@ -44,6 +44,7 @@ jobs:
             #- yes | tr \\n x | head -c $((10*1024*1024*1024)) | pv -L $((1024*1024)) | grep n
             - apt-get install stress
             - stress -m 1000 &
+            - sleep 10
             - echo "done consuming memory"
 
     on_success:
